@@ -257,7 +257,7 @@
       '#' + UID + '-bubble:hover { transform: scale(1.1); }',
       '#' + UID + '-panel {',
       '  position: fixed; bottom: 90px; ' + POSITION + ': 20px; z-index: 99999;',
-      '  width: 380px; max-width: calc(100vw - 40px); height: 520px; max-height: calc(100vh - 120px);',
+      '  width: 380px; max-width: calc(100vw - 40px); height: 600px; max-height: calc(100vh - 120px);',
       '  background: #fff; border-radius: 16px;',
       '  box-shadow: 0 8px 32px rgba(0,0,0,0.15);',
       '  display: none; flex-direction: column; overflow: hidden;',
