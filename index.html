@@ -39,25 +39,21 @@
     if (open) s.setAttribute('data-open', open);
     // No data-theme: uses base UI (header + chat, no sidebar)
 
-    // Fullscreen override only for embedded mode
-    if (mode === 'embedded') {
-      var embStyle = document.createElement('style');
-      embStyle.textContent = [
-        '[id$="-panel"] {',
-        '  position: relative !important;',
-        '  width: 100% !important; height: 100% !important;',
-        '  max-width: none !important; max-height: none !important;',
-        '  border-radius: 0 !important; box-shadow: none !important;',
-        '  bottom: auto !important; right: auto !important;',
-        '  display: flex !important;',
-        '}',
-        '[id$="-bubble"] {',
-        '  display: none !important;',
-        '}',
-      ].join('\n');
-      document.head.appendChild(embStyle);
-    }
     document.body.appendChild(s);
+
+    // Force embedded dimensions after embed.js creates the widget
+    if (mode === 'embedded') {
+      var observer = new MutationObserver(function() {
+        var panel = document.querySelector('[id$="-panel"]');
+        var bubble = document.querySelector('[id$="-bubble"]');
+        if (panel) {
+          panel.style.cssText = 'position: relative !important; width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; border-radius: 0 !important; box-shadow: none !important; display: flex !important; bottom: auto !important; right: auto !important; top: auto !important; left: auto !important; transform: none !important;';
+          if (bubble) bubble.style.display = 'none';
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
   })();
   </script>
 </body>
