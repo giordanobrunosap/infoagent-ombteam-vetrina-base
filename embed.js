@@ -376,6 +376,9 @@
     panel.style.bottom = 'auto';
     panel.style.right = 'auto';
     panel.style.transform = 'translate(-50%, -50%)';
+    panel.style.width = '500px';
+    panel.style.height = '600px';
+    panel.style.maxHeight = 'none';
   }
 
   panel.innerHTML = [
