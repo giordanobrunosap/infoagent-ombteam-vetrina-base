@@ -376,10 +376,12 @@
     panel.style.bottom = 'auto';
     panel.style.right = 'auto';
     panel.style.transform = 'translate(-50%, -50%)';
-    panel.style.width = '500px';
+    panel.style.width = '400px';
     panel.style.maxWidth = 'none';
-    panel.style.height = '600px';
+    panel.style.height = '620px';
     panel.style.maxHeight = 'none';
+    panel.style.borderRadius = '16px';
+    panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1), 0 30px 80px rgba(0,0,0,0.15)';
   }
 
   panel.innerHTML = [
