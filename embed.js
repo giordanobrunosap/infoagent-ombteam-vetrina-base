@@ -368,6 +368,9 @@
     panel.style[POSITION] = 'auto';
     panel.style.width = '100%';
     panel.style.height = '100%';
+    panel.style.maxWidth = 'none';
+    panel.style.maxHeight = 'none';
+    panel.style.display = 'flex';
   } else if (OPEN) {
     panel.classList.add('open');
     panel.style.position = 'fixed';
