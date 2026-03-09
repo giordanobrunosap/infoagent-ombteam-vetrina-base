@@ -699,6 +699,33 @@
     panel.style.setProperty('--primary-hover', 'hsl('+hsl[0]+','+hsl[1]+'%,'+hoverL+'%)');
     panel.style.setProperty('--user-msg-bg', hex);
     panel.style.setProperty('--sidebar-bg', 'hsl('+hsl[0]+','+Math.min(hsl[1],60)+'%,'+sidebarL+'%)');
+
+    // Base mode (no theme): update elements directly
+    if (!THEME) {
+      var header = document.getElementById(UID + '-header');
+      var send = document.getElementById(UID + '-send');
+      var input = document.getElementById(UID + '-input');
+      if (header) header.style.background = hex;
+      if (send) send.style.background = hex;
+      if (input) input.style.borderColor = hex;
+      // User messages
+      var userMsgs = panel.querySelectorAll('.' + UID + '-msg-user');
+      for (var i = 0; i < userMsgs.length; i++) userMsgs[i].style.background = hex;
+      // Chips
+      var chips = panel.querySelectorAll('.' + UID + '-chip');
+      for (var j = 0; j < chips.length; j++) {
+        chips[j].style.borderColor = hex;
+        chips[j].style.color = hex;
+      }
+      // Update chip hover style
+      var hoverRule = '.' + UID + '-chip:hover { background: ' + hex + ' !important; color: #fff !important; }';
+      var focusRule = '#' + UID + '-input:focus { border-color: ' + hex + ' !important; }';
+      if (!panel._colorStyle) {
+        panel._colorStyle = document.createElement('style');
+        document.head.appendChild(panel._colorStyle);
+      }
+      panel._colorStyle.textContent = hoverRule + '\n' + focusRule;
+    }
   });
 
   } // end boot()
